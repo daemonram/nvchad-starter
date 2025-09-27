@@ -16,13 +16,25 @@ return {
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+  	"nvim-treesitter/nvim-treesitter",
+  	opts = {
+  		ensure_installed = {
+  			"vim", "lua", "vimdoc",
+       "c", "cpp", "yang"
+  		},
+  	},
+  },
+  -- Override the default gitsigns settings
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
+      -- You can add other configurations here as well
+      -- For example, to adjust the virtual text position:
+      -- current_line_blame_opts = {
+      --   virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+      -- },
+    },
+  },
 }
