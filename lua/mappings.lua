@@ -11,5 +11,6 @@ map('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { desc = '
 map("i", "jk", "<ESC>")
 map('n', ']h', '<cmd>Gitsigns next_hunk<CR>', { desc = 'Next git hunk' })
 map('n', '[h', '<cmd>Gitsigns prev_hunk<CR>', { desc = 'Prev git hunk' })
+map('n', '<leader>lg', '<cmd>Telescope grep_string<CR>', { desc = 'Telescope search for word' })
 
 -- map({ "n:, "i", "v" }, "<C-s>", "<cmd> w <cr>")
