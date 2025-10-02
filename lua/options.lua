@@ -6,6 +6,9 @@ local o = vim.o
 o.cursorlineopt ='both' -- to enable cursorline!
 o.wrapscan = false
 o.ignorecase = false
+o.textwidth = 80
+o.colorcolumn = '+1'
+--vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#123456" })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c', 'cpp', 'objc', 'h' },
