@@ -12,5 +12,10 @@ map("i", "jk", "<ESC>")
 map('n', ']h', '<cmd>Gitsigns next_hunk<CR>', { desc = 'Next git hunk' })
 map('n', '[h', '<cmd>Gitsigns prev_hunk<CR>', { desc = 'Prev git hunk' })
 map('n', '<leader>lg', '<cmd>Telescope grep_string<CR>', { desc = 'Telescope search for word' })
+-- In your keymaps.lua or init.lua
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
+
 
 -- map({ "n:, "i", "v" }, "<C-s>", "<cmd> w <cr>")

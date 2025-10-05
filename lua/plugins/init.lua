@@ -25,7 +25,7 @@ require("ibl").setup { indent = { highlight = highlight } }
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = { "obj%-common"}, -- Add your directory names here
+    file_ignore_patterns = { "obj%-common", "unit%-test" }, -- Add your directory names here
   },
 }
 return {
@@ -72,26 +72,42 @@ return {
     lazy = false,
   },
   {
-    {
-      "lukas-reineke/indent-blankline.nvim",
-      main = "ibl",
-      opts = {
-        -- Other options for indent-blankline
-        indent = {
-          char = "│", -- Or any other character you prefer
-          highlight = {
-            "RainbowRed",
-            "RainbowYellow",
-            "RainbowBlue",
-            "RainbowOrange",
-            "RainbowGreen",
-            "RainbowViolet",
-            "RainbowCyan",
-          },
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      -- Other options for indent-blankline
+      indent = {
+        char = "│", -- Or any other character you prefer
+        highlight = {
+          "RainbowRed",
+          "RainbowYellow",
+          "RainbowBlue",
+          "RainbowOrange",
+          "RainbowGreen",
+          "RainbowViolet",
+          "RainbowCyan",
         },
-        -- You might also want to adjust context_highlight_blankline or other options
-        -- to suit your preferences.
       },
+      -- You might also want to adjust context_highlight_blankline or other options
+      -- to suit your preferences.
     },
   },
+  {
+    "dhananjaylatkar/cscope_maps.nvim",
+    config = function()
+      require('cscope_maps').setup()
+    end,
+    dependencies = {
+      "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
+      "ibhagwan/fzf-lua", -- optional [for picker="fzf-lua"]
+      "echasnovski/mini.pick", -- optional [for picker="mini-pick"]
+      "folke/snacks.nvim", -- optional [for picker="snacks"]
+    },
+    opts = {
+      -- USE EMPTY FOR DEFAULT OPTIONS
+      -- DEFAULTS ARE LISTED BELOW
+      disable_maps = false,
+    },
+    lazy = false,
+  }
 }
