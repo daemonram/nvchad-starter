@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "eldritch",
+	theme = "tundra",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -15,10 +15,24 @@ M.base46 = {
 }
 
 -- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
+M.ui = {
+  tabufline = {
+    lazyload = false
+  },
+  telescope = { style = "bordered" },
+  statusline = {
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "default",
+    order = { "mode", "f", "git", "%=", "lsp_msg", "%=", "lsp",  "cursor", "lines"},
+    modules = {
+      lines = function()
+        return string.format("[%d lines]", vim.fn.line('$'))
+      end,
+      f = "%F"
+    }
+  }
+}
 
 return M

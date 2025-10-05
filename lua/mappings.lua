@@ -3,6 +3,19 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local function toggle_quickfix()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end
+
+vim.keymap.set('n', '<Leader>q', toggle_quickfix, { desc = "Toggle Quickfix Window" })
+
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map('n', '<leader>lr', '<cmd>Telescope lsp_references<CR>', { desc = 'LSP References' })
