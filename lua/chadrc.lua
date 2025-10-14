@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "tundra",
+	theme = "neofusion",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -30,7 +30,7 @@ M.ui = {
      lines = function()
        return string.format("[%d lines]", vim.fn.line('$'))
      end,
-     f = "%#St_Mode#%F %#StText#"
+     f = "%#St_Mode# %f %#StText#"
    }
  }
 }

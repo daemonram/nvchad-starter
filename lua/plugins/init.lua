@@ -25,10 +25,34 @@ require("ibl").setup { indent = { highlight = highlight } }
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = { "obj%-common", "unit%-test" }, -- Add your directory names here
+    file_ignore_patterns = { "obj%-common", "unit%-test", "logs", "developer%-tests", "gerrit%-tools", "log", "cscope*" }, -- Add your directory names here
   },
 }
 return {
+  {
+    "lukoshkin/highlight-whitespace",
+    lazy = false;
+    opts = {
+      tws = "\\s\\+$",
+      clear_on_bufleave = false,
+      palette = {
+        markdown = {
+          tws = 'RosyBrown',
+          ['\\S\\@<=\\s\\(\\.\\|,\\)\\@='] = 'CadetBlue3',
+          ['\\S\\@<= \\{2,\\}\\S\\@='] = 'SkyBlue1',
+          ['\\t\\+'] = 'plum4',
+        },
+        other = {
+          tws = 'PaleVioletRed',
+          ['\\S\\@<=\\s,\\@='] = 'coral1',
+          ['\\S\\@<=\\(#\\|--\\)\\@<! \\{2,3\\}\\S\\@=\\(#\\|--\\)\\@!'] = 'LightGoldenrod3',
+          ['\\(#\\|--\\)\\@<= \\{2,\\}\\S\\@='] = '#3B3B3B',
+          ['\\S\\@<= \\{3,\\}\\(#\\|--\\)\\@='] = '#3B3B3B',
+          ['\\t\\+'] = 'plum4',
+        }
+      }
+    }
+  },
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -109,5 +133,27 @@ return {
       disable_maps = false,
     },
     lazy = false,
-  }
+  },
+  {
+    'p00f/clangd_extensions.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- Required dependency
+    },
+    config = function()
+      require('clangd_extensions').setup {
+        -- Optional configuration
+      }
+    end,
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()  -- Mapping tab is already used by NvChad
+      vim.g.copilot_no_tab_map = true;
+      vim.g.copilot_assume_mapped = true;
+      vim.g.copilot_tab_fallback = "";
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+    end
+  },
 }

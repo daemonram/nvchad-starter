@@ -8,12 +8,13 @@ o.wrapscan = false
 o.ignorecase = false
 o.textwidth = 80
 o.colorcolumn = '+1'
+o.list = true
+vim.opt.expandtab = true
 --vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#123456" })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c', 'cpp', 'objc', 'h' },
   callback = function()
-    vim.notify 'Hello World!'
     vim.opt.cindent = true
     vim.opt.shiftwidth = 4
     vim.opt.expandtab = true
@@ -26,7 +27,6 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'yang', 'yml', 'yaml' },
   callback = function()
-    vim.notify 'Yahoo World!'
     vim.opt_local.expandtab = true
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
