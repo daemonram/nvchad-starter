@@ -10,6 +10,7 @@ o.textwidth = 80
 o.colorcolumn = '+1'
 o.list = true
 vim.opt.expandtab = true
+o.expandtab = true
 --vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#123456" })
 
 vim.api.nvim_create_autocmd('FileType', {

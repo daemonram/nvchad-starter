@@ -44,11 +44,11 @@ return {
         },
         other = {
           tws = 'PaleVioletRed',
-          ['\\S\\@<=\\s,\\@='] = 'coral1',
-          ['\\S\\@<=\\(#\\|--\\)\\@<! \\{2,3\\}\\S\\@=\\(#\\|--\\)\\@!'] = 'LightGoldenrod3',
-          ['\\(#\\|--\\)\\@<= \\{2,\\}\\S\\@='] = '#3B3B3B',
-          ['\\S\\@<= \\{3,\\}\\(#\\|--\\)\\@='] = '#3B3B3B',
-          ['\\t\\+'] = 'plum4',
+          -- ['\\S\\@<=\\s,\\@='] = 'coral1',
+          -- ['\\S\\@<=\\(#\\|--\\)\\@<! \\{2,3\\}\\S\\@=\\(#\\|--\\)\\@!'] = 'LightGoldenrod3',
+          -- ['\\(#\\|--\\)\\@<= \\{2,\\}\\S\\@='] = '#3B3B3B',
+          -- ['\\S\\@<= \\{3,\\}\\(#\\|--\\)\\@='] = '#3B3B3B',
+          -- ['\\t\\+'] = 'plum4',
         }
       }
     }
@@ -71,13 +71,13 @@ return {
   -- { import = "nvchad.blink.lazyspec" },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "c", "cpp", "yang"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "c", "cpp", "yang"
+      },
+    },
   },
   -- Override the default gitsigns settings
   {
@@ -154,6 +154,47 @@ return {
       vim.g.copilot_tab_fallback = "";
       -- The mapping is set to other key, see custom/lua/mappings
       -- or run <leader>ch to see copilot mapping section
+    end
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        width = { min = 30, max = -1 },
+      },
+      sort = {
+        sorter = "case_sensitive",
+      },
+    },
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    lazy = false,
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {
+      -- See Configuration section for options
+    },
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+    config = function()
+      require("mcphub").setup({
+        extensions = {
+        copilotchat = {
+            enabled = true,
+            convert_tools_to_functions = true,     -- Convert MCP tools to CopilotChat functions
+            convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+            add_mcp_prefix = false,                -- Add "mcp_" prefix to function names
+        }
+    }
+      })
     end
   },
 }
