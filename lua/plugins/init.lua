@@ -25,7 +25,38 @@ require("ibl").setup { indent = { highlight = highlight } }
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = { "obj%-common", "unit%-test", "logs", "developer%-tests", "gerrit%-tools", "log", "cscope*" }, -- Add your directory names here
+    file_ignore_patterns = {
+      -- Add your directory names here to ignore them when searching
+      ".git",
+      ".gitignore",
+      "cscope*",
+      "compile_commands.json",
+      ".tgz",
+      "build%-metrics",
+      -- "unit%-test",
+      -- "logs",
+      -- "developer%-tests",
+      -- "gerrit%-tools",
+      -- "log",
+      -- "gen%-exports",
+      -- ".sys",
+      -- "build_metric",
+      -- "smoketest%-suites",
+      -- "objmon",
+      -- "__gen",
+    },
+    vimgrep_arguments = {
+          'rg',
+    --      '--color=never',
+    --      '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--case-sensitive',
+    --      '--smart-case',
+          '--no-ignore', -- This flag disables respecting .gitignore and .ignore files
+    --      '--hidden',    -- This flag includes hidden files (dotfiles)
+    },
   },
 }
 return {
