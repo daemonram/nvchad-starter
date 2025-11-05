@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.expandtab = true
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
+    print("C/C++/ObjC filetype detected")
   end,
 })
 
@@ -31,6 +32,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.expandtab = true
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
+    print("Yang filetype detected")
   end,
 })
 

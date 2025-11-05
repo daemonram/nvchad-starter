@@ -19,6 +19,7 @@ vim.keymap.set('n', '<Leader>q', toggle_quickfix, { desc = "Toggle Quickfix Wind
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map('n', '<leader>lr', '<cmd>Telescope lsp_references<CR>', { desc = 'LSP References' })
+map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { desc = 'Telescope find_files' })
 map('n', '<leader>gr', vim.lsp.buf.references, { desc = 'LSP References' })
 map('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle git blame' })
 map("i", "jk", "<ESC>")
