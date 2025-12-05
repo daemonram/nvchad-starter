@@ -11,6 +11,7 @@ o.colorcolumn = '+1'
 o.list = true
 vim.opt.expandtab = true
 o.expandtab = true
+o.clipboard = ""
 --vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#123456" })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -22,7 +23,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.expandtab = true
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
-    print("C/C++/ObjC filetype detected")
+    --print("C/C++/ObjC filetype detected")
   end,
 })
 
@@ -30,10 +31,9 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'yang', 'yml', 'yaml' },
   callback = function()
     vim.opt_local.expandtab = true
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    print("Yang filetype detected")
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    --print("Yang filetype detected")
   end,
 })
-
 o.whichwrap = ""

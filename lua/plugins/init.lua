@@ -25,6 +25,8 @@ require("ibl").setup { indent = { highlight = highlight } }
 
 require('telescope').setup{
   defaults = {
+    layout_strategy = 'vertical',
+    layout_config = { width = 0.5 }, -- other layout configuration here ,
     file_ignore_patterns = {
       -- Add your directory names here to ignore them when searching
       ".git",
@@ -36,10 +38,12 @@ require('telescope').setup{
       "compile_commands.json",
       ".tgz",
       "build%-metrics",
+      "obj%-common",
       "%.diff",
       "%.mk",
       "%.o",
       "%.d",
+      "%.ii",
       -- "unit%-test",
       -- "logs",
       -- "developer%-tests",
@@ -52,6 +56,7 @@ require('telescope').setup{
       -- "objmon",
       -- "__gen",
     },
+    scroll_strategy = 'limit',
     vimgrep_arguments = {
           'rg',
     --      '--color=never',
